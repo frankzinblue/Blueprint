@@ -1,13 +1,32 @@
 (function () {
 
     var button = document.getElementById("mybutton");
-    var testDisplay = document.getElementById("testDisplay");
+    var prevDisplay = document.getElementById("valueDisplay");
     var timer;
     var endDate;
     var targetDisplayId;
 
+    function setPrevValue() {
+        chrome.storage.local.get("userInputValue", function(cb) {
+            console.log('yes there are previous saved value!');
+            prevDisplay.innerHTML = cb.userInputValue;
+            startFunction(cb.userInputValue, 'countdown')
+            console.log(cb);
+        })
+
+    }
+
     button.addEventListener("click", function() {
         var testInput = document.getElementById('testInput').value;
+
+        if (testInput) {
+            chrome.storage.local.set({'userInputValue': testInput}, function() {
+                console.log('information saved!');
+                prevDisplay.innerHTML = testInput;
+            });
+        } else {
+            console.log('NO VALUE provided.');
+        }
         startFunction(testInput, 'countdown')
     });
 
@@ -49,5 +68,7 @@
         document.getElementById(targetDisplayId).innerHTML += minutes + 'mins ';
         document.getElementById(targetDisplayId).innerHTML += seconds + 'secs ';
     }
+
+    setPrevValue();
 
 })();
