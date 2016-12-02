@@ -2,8 +2,16 @@
 <html>
 <head>
     <title></title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <script type="text/javascript" src="../inject/inject.js"></script>
+    <script type="text/javascript" src="../inject/note.js"></script>
+    <link rel="stylesheet" type="text/css" href="../inject/inject.css">
 </head>
+
 <body>
     Blank New Tab
     <div>
@@ -15,6 +23,29 @@
     </div>
     <button id="mybutton">click me</button>
     <div id="countdown"></div>
+<!--  -->
+    <div class="add test">
+        <span>Add note</span>
+        <i class="fa fa-plus-square-o fa-fw"></i>
+    </div>
+    <div class="add-note">
+        <input name="title" id="titleInput" maxlength="50" placeholder="Title"/>
+        <textarea name="text" id="text" cols="25" rows="5" placeholder="Text"></textarea>
+        <button>Add</button>
+    </div>
+
+    <div class="wrapper">
+    </div>
+
+    <script id="entry-template" type="text/x-handlebars-template">
+        <div class="mainbar">
+            <span class="noteTitle"></span>
+            <div class="close"><i class="fa fa-times-circle fa-fw"></i></div>
+            <div class="minimize"><i class="fa fa-minus-square-o fa-fw"></i></div>
+        </div>
+        <pre class="text"></pre>
+    </script>
+<!--  -->
 </body>
 
 <script type="text/javascript" src="../datepicker.js"></script>
